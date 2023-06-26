@@ -25,11 +25,22 @@ function App() {
 
   const onClickComplete = (index) => {
     const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
-
     const newCompleteTodos = [...todids, todos[index]];
+
+    newTodos.splice(index, 1);
+
+    setTodos(newTodos);
     setTodids(newCompleteTodos);
+  };
+
+  const onClickBack = (index) => {
+    const newTodids = [...todids];
+    const newTodos = [...todos, todids[index]];
+
+    newTodids.splice(index, 1);
+
+    setTodids(newTodids);
+    setTodos(newTodos);
   };
 
   return (
@@ -62,11 +73,11 @@ function App() {
       <div className="completeArea">
         <p>完了したTODO</p>
         <ul>
-          {todids.map((item) => {
+          {todids.map((item, index) => {
             return (
               <div key={item} className="list">
                 <li>{item}</li>
-                <button>戻る</button>
+                <button onClick={() => onClickBack(index)}>戻る</button>
               </div>
             );
           })}
