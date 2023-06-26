@@ -19,12 +19,17 @@ function App() {
 
   const onClickDelete = (index) => {
     const newTodo = [...todos];
-    newTodo.slice(index, 1);
+    newTodo.splice(index, 1);
     setTodos(newTodo);
   };
 
   const onClickComplete = (index) => {
-    alert(index);
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+
+    const newCompleteTodos = [...todids, todos[index]];
+    setTodids(newCompleteTodos);
   };
 
   return (
