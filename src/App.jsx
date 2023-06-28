@@ -52,7 +52,12 @@ function App() {
         todoText={todoText}
         changeText={onChangeTodoText}
         onClickAdd={onClickAdd}
+        disable={todos.length >= 7}
       />
+
+      {todos.length >= 7 && (
+        <p style={{ color: "red" }}>登録できるTODOは7個までです。</p>
+      )}
 
       <IncompleteArea
         todos={todos}
